@@ -1,0 +1,8 @@
+{
+    "black_list": {
+        "yandex.ru": "",
+        "mail.ru": "192.202.0.1",
+        "speedtest.net": "166.166.0.2"
+    },
+    "upstream_server": "8.8.4.4"
+}
