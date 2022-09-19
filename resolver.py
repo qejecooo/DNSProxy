@@ -5,11 +5,12 @@ from dnslib.server import BaseResolver
 
 
 class ProxyResolver(BaseResolver):
-    def __init__(self, address, port, timeout=0, strip_aaaa=False):
+    def __init__(self, address, port, timeout=0, strip_aaaa=False, black_list=None):
         self.address = address
         self.port = port
         self.timeout = timeout
         self.strip_aaaa = strip_aaaa
+        self.black_list = black_list
 
     def resolve(self, request, handler):
         """

@@ -2,7 +2,7 @@ import struct
 import socket
 
 
-def send_tcp(data: list, host: str, port: int) -> bytes:
+def send_tcp(data: bytes, host: str, port: int) -> bytes:
     """
     Method to send TCP packet to our upstream DNS server and return the response.
         :param data: The DNS packet to send.
@@ -21,11 +21,11 @@ def send_tcp(data: list, host: str, port: int) -> bytes:
             response += sock.recv(8192)
         return response
     finally:
-        if (sock is not None):
+        if sock is not None:
             sock.close()
 
 
-def send_udp(data: list, host: str, port: int) -> bytes:
+def send_udp(data: bytes, host: str, port: int) -> bytes:
     """
     Method to send UDP packet to our upstream DNS server and return the response.
         :param data: The DNS packet to send.
@@ -40,5 +40,5 @@ def send_udp(data: list, host: str, port: int) -> bytes:
         response, server = sock.recvfrom(8192)
         return response
     finally:
-        if (sock is not None):
+        if sock is not None:
             sock.close()

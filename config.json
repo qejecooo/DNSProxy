@@ -4,5 +4,12 @@
         "mail.ru": "192.202.0.1",
         "speedtest.net": "166.166.0.2"
     },
-    "upstream_server": "8.8.4.4"
+    "local_dns_server": {
+        "ip": "127.0.0.101",
+        "port": 53
+    },
+    "upstream_server": {
+        "ip": "8.8.8.8",
+        "port": 53
+    }
 }

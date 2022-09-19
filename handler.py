@@ -7,7 +7,7 @@ from send_packet import send_tcp, send_udp
 
 
 class PassthroughDNSHandler(DNSHandler):
-    def get_reply(self, data: list) -> bytes:
+    def get_reply(self, data: bytes) -> bytes:
         """
         Method to send data directly to upstream DNS server and parse reply from it
             :param data: The DNS packet to send.
@@ -17,9 +17,10 @@ class PassthroughDNSHandler(DNSHandler):
 
         request = DNSRecord.parse(data)
         domain = str(request.q.qname)[:-1]
+        black_list = self.server.resolver.black_list
         self.server.logger.log_request(self, request)
 
-        if domain in black_list:
+        if domain in black_list.keys():
             if black_list[domain] == "":
                 print("Not resolved: " + domain)
                 response = DNSRecord(DNSHeader(id=request.header.id, qr=1, aa=1, ra=1), q=request.q)

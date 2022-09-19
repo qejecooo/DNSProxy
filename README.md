@@ -39,3 +39,13 @@ upstreaming the queries to configfile upstream server address. Only UDP datagram
 Since we use PassThroughDNSHandler to send packets directly to upstream server, this flag makes no difference <br/>
 <b>--log</b>: Log hooks to enable (default: +request,+reply,+truncated,+error,-recv,-send,-data)<br/>
 <b>--log-prefix</b>: Log prefix (timestamp/handler/resolver) (default: False)<br/>
+
+# <b>How to test your DNSProxy server?</b><br/>
+You can use dig command to test your DNSProxy server.<br/>
+For example:<br/>
+<b>dig @<your_dns_server_ip> -p <your_dns_port> google.com</b><br/>
+
+Or change your DNS server to your DNSProxy server IP address and port in your network settings.<br/>
+Then you can test it by opening your browser and going to google.com.<br/>
+To do this open by text editor your <b>/etc/resolv.conf</b> file and add the following line:<br/>
+<b>nameserver <your_dns_server_ip></b><br/>
